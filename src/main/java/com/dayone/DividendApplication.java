@@ -1,4 +1,4 @@
-package com.example.dividend;
+package com.dayone;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
