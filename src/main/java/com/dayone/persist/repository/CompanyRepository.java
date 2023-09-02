@@ -1,8 +1,11 @@
 package com.dayone.persist.repository;
 
 import com.dayone.persist.entity.CompanyEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CompanyRepository extends JpaRepository<CompanyEntity, Long> {
@@ -10,4 +13,6 @@ public interface CompanyRepository extends JpaRepository<CompanyEntity, Long> {
 
     Optional<CompanyEntity> findByName(String name);
 //    Optional<CompanyEntity> findByTicker(String ticker);
+
+    Page<CompanyEntity> findByNameStartingWithIgnoreCase(String s, Pageable pageable);
 }
