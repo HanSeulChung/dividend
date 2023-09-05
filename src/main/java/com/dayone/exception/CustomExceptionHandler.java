@@ -39,6 +39,8 @@ public class CustomExceptionHandler {
 //        return new ResponseEntity<>(errorResponse, HttpStatus.resolve(400));
 //    }
 
+
+    // 여기서 handle을 하고싶음. 터미널 log는 이렇게 찍히지만 POST MAN에서 동작확인 시에는 handle되지 않음
     @ExceptionHandler(UsernameNotFoundException.class)
     protected ResponseEntity<?> handleUserNotFoundException(UsernameNotFoundException e) {
         ErrorResponse errorResponse = ErrorResponse.builder()
