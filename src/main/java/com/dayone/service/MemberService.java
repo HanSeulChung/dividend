@@ -1,6 +1,10 @@
 package com.dayone.service;
 
 
+import com.dayone.exception.impl.AlreadyExistUserException;
+import com.dayone.exception.impl.NoUserIdException;
+import com.dayone.exception.impl.UnmatchPasswordException;
+import com.dayone.exception.impl.UserNotFoundException;
 import com.dayone.model.Auth;
 import com.dayone.persist.entity.MemberEntity;
 import com.dayone.persist.repository.MemberRepository;
@@ -21,15 +25,15 @@ public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) {
         return memberRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("couldn't find user -> " + username));
+                .orElseThrow(() -> new UserNotFoundException(username));
     }
 
     public MemberEntity register(Auth.SignUp member) {
         boolean exits = this.memberRepository.existsByUsername(member.getUsername()) ;
         if (exits) {
-            throw new RuntimeException("이미 사용 중인 아이디 입니다.");
+            throw new AlreadyExistUserException();
         }
 
         member.setPassword(this.passwordEncoder.encode(member.getPassword()));
@@ -40,10 +44,10 @@ public class MemberService implements UserDetailsService {
     public MemberEntity authenticate(Auth.SignIn member) {
 
         var user = this.memberRepository.findByUsername(member.getUsername())
-                .orElseThrow(() -> new RuntimeException("존재하지 않는 ID입니다."));
+                .orElseThrow(() -> new NoUserIdException());
 
         if (!this.passwordEncoder.matches(member.getPassword(), user.getPassword())) {
-            throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+            throw new UnmatchPasswordException();
         }
 
         return user;
