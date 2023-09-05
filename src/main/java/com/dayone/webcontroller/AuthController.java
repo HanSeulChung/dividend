@@ -31,6 +31,7 @@ public class AuthController {
         // 로그인 API
         var member = this.memberService.authenticate(request);
         var token = this.tokenProvider.generateToken(member.getUsername(), member.getRoles());
+        log.info("user login -> " + request.getUsername());
         return ResponseEntity.ok(token);
     }
 }
