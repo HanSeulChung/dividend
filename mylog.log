@@ -388,4 +388,4 @@
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:829)
-13:55:17.636 [ http-nio-8080-exec-6 ] INFO  c.d.webcontroller.AuthController13:55:19.847 [ http-nio-8080-exec-7 ] INFO  c.d.webcontroller.AuthController13:55:22.674 [ http-nio-8080-exec-8 ] INFO  c.d.security.JwtAuthenticationFilter
+13:55:17.636 [ http-nio-8080-exec-6 ] INFO  c.d.webcontroller.AuthController13:55:19.847 [ http-nio-8080-exec-7 ] INFO  c.d.webcontroller.AuthController13:55:22.674 [ http-nio-8080-exec-8 ] INFO  c.d.security.JwtAuthenticationFilter18:00:05.156 [ HikariPool-1 housekeeper ] WARN  com.zaxxer.hikari.pool.HikariPool20:46:29.542 [ SpringApplicationShutdownHook ] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean20:46:29.617 [ SpringApplicationShutdownHook ] INFO  com.zaxxer.hikari.HikariDataSource20:46:29.646 [ SpringApplicationShutdownHook ] INFO  com.zaxxer.hikari.HikariDataSource
